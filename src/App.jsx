@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://your-api-id.execute-api.us-east-1.amazonaws.com/prod/query";
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "PLACEHOLDER";
 
 export default function App() {
   const [customerId, setCustomerId] = useState("");
