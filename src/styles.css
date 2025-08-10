@@ -11,22 +11,37 @@
   height: 300px;
   overflow-y: auto;
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .message {
   padding: 0.5rem;
   border-radius: 4px;
   margin-bottom: 0.5rem;
+  max-width: 90%;
 }
 
 .message.user {
   background-color: #d1e7dd;
   text-align: right;
+  align-self: flex-end;
 }
 
 .message.bot {
   background-color: #f8d7da;
   text-align: left;
+  align-self: flex-start;
+}
+
+.message-text {
+  margin-bottom: 6px;
+}
+
+.message-audio {
+  width: 100%;
+  outline: none;
 }
 
 .chat-form input,
