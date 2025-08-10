@@ -15,10 +15,6 @@ function App() {
 
   // Load from localStorage OR show welcome message on first load
   useEffect(() => {
-    const stored = localStorage.getItem('chatHistory');
-    if (stored) {
-      setMessages(JSON.parse(stored));
-    } else {
       setMessages([
         {
           from: 'bot',
