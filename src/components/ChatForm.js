@@ -14,7 +14,7 @@ function ChatForm({ onNewMessage }) {
 
     try {
       const result = await sendMessage(customerId, text, lang);
-      onNewMessage({ from: 'bot', text: result.reply });
+      onNewMessage({ from: 'bot', text: result.reply, audioUrl: result.audioUrl });
     } catch (err) {
       onNewMessage({ from: 'bot', text: 'Error: ' + err.message });
     }
