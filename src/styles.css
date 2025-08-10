@@ -98,3 +98,25 @@ body {
 .chat-form button:hover {
   background-color: #3c7dc0;
 }
+
+.suggestions {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.suggestion-chip {
+  background-color: #f5f5f5;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.suggestion-chip:hover {
+  background-color: #e0e0e0;
+}
+
