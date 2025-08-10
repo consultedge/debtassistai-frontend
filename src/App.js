@@ -6,40 +6,32 @@ import './styles.css';
 function App() {
   const [messages, setMessages] = useState([]);
 
-  // Suggestions for quick questions
   const suggestions = [
     'How can I improve my credit score?',
     'Explain my debt repayment options',
     'Help me understand my rights'
   ];
 
-  // Load from localStorage OR show welcome message on first load
+  // On first load, show welcome message
   useEffect(() => {
-      setMessages([
-        {
-          from: 'bot',
-          text: 'Hi, I’m DebtAssistAI — your friendly guide to managing debt better. How can I help you today?'
-        }
-      ]);
-    }
+    setMessages([
+      {
+        from: 'bot',
+        text: 'Hi, I’m DebtAssistAI — your friendly guide to managing debt better. How can I help you today?'
+      }
+    ]);
   }, []);
 
-  // Save to localStorage whenever messages change
-  useEffect(() => {
-    if (messages.length > 0) {
-      localStorage.setItem('chatHistory', JSON.stringify(messages));
-    }
-  }, [messages]);
-
+  // Send a new message (this can call API later)
   const handleNewMessage = (message) => {
     setMessages(prev => [...prev, message]);
+
+    // TODO: Call your API here (sendMessage) and push bot response
   };
 
-  // Handle suggestion chip click
+  // Suggestion chip click
   const handleSuggestionClick = (suggestion) => {
-    // Pass this clicked suggestion to ChatForm as if user typed it
-    setMessages(prev => [...prev, { from: 'user', text: suggestion }]);
-    // You can also directly trigger API call here if you want
+    handleNewMessage({ from: 'user', text: suggestion });
   };
 
   return (
@@ -48,7 +40,6 @@ function App() {
 
       <MessageList messages={messages} />
 
-      {/* Suggestion Chips */}
       <div className="suggestions">
         {suggestions.map((s, idx) => (
           <button
