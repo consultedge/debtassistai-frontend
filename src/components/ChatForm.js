@@ -10,7 +10,6 @@ function ChatForm({ onNewMessage }) {
     e.preventDefault();
     if (!customerId || !text) return;
 
-    // Show user message immediately
     onNewMessage({ from: 'user', text });
 
     try {
@@ -31,33 +30,21 @@ function ChatForm({ onNewMessage }) {
         value={customerId}
         onChange={(e) => setCustomerId(e.target.value)}
         required
-        className="chat-input"
       />
-
       <textarea
         placeholder="Type your question..."
         value={text}
         onChange={(e) => setText(e.target.value)}
         required
-        className="chat-textarea"
       />
-
-      <div className="chat-controls">
-        <select
-          value={lang}
-          onChange={(e) => setLang(e.target.value)}
-          className="chat-select"
-        >
-          <option value="en">English</option>
-          <option value="es">Spanish</option>
-          <option value="fr">French</option>
-          <option value="de">German</option>
-          <option value="hi">Hindi</option>
-          <option value="ta">Tamil</option>
-        </select>
-
-        <button type="submit" className="chat-button">Ask</button>
-      </div>
+      <select value={lang} onChange={(e) => setLang(e.target.value)}>
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="fr">French</option>
+        <option value="de">German</option>
+        <option value="hi">Hindi</option>
+      </select>
+      <button type="submit">Ask</button>
     </form>
   );
 }
