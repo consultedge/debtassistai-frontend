@@ -14,19 +14,15 @@ export async function sendMessage(customerId, text, lang) {
 
   const data = await response.json();
 
-  // Play audio if available
-  if (data.audioBase64) {
-    const binary = atob(data.audioBase64);
-    const len = binary.length;
-    const bytes = new Uint8Array(len);
-    for (let i = 0; i < len; i++) {
-      bytes[i] = binary.charCodeAt(i);
-    }
-    const audioBlob = new Blob([bytes], { type: 'audio/mpeg' });
-    const audioUrl = URL.createObjectURL(audioBlob);
-    const audio = new Audio(audioUrl);
+  // Play audio if available from audioUrl
+  if (data.audioUrl) {
+    const audio = new Audio(data.audioUrl);
     audio.play().catch(e => console.warn('Audio play failed', e));
   }
 
-  return data;
+  // Return in the format the UI expects
+  return {
+    reply: data.text,      // mapped from API's "text"
+    audioUrl: data.audioUrl || null
+  };
 }
